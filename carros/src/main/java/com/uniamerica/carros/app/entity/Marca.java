@@ -23,9 +23,15 @@ public class Marca {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
+	@Getter
 	private String nome;
 
 	@OneToMany
 	private List<Carro> carros;
+
+	public String getNome() {
+		return nome;
+	}
+
 
 }
