@@ -6,4 +6,5 @@ import com.uniamerica.carros.app.entity.Marca;
 
 public interface MarcaRepository extends JpaRepository<Marca, Long>{
 
+	
 }
