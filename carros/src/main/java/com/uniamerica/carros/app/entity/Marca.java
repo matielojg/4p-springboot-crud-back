@@ -29,9 +29,4 @@ public class Marca {
 	@OneToMany
 	private List<Carro> carros;
 
-	public String getNome() {
-		return nome;
-	}
-
-
 }

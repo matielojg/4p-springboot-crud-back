@@ -44,32 +44,32 @@ public class MarcaController {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
-	
+
 	@GetMapping("/findById/{idMarca}")
-	public ResponseEntity<Marca> findById(@PathVariable long idMarca){
-		
+	public ResponseEntity<Marca> findById(@PathVariable long idMarca) {
+
 		try {
-			
+
 			Marca marca = this.marcaService.findById(idMarca);
 			return new ResponseEntity<>(marca, HttpStatus.OK);
-			
+
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
-		
 	}
+
 	@DeleteMapping("/delete/{idMarca}")
-	public ResponseEntity<String> delete(@PathVariable long idMarca){
-		
+	public ResponseEntity<String> delete(@PathVariable long idMarca) {
+
 		try {
-			
+
 			String mensagem = this.marcaService.delete(idMarca);
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
-			
+
 		} catch (Exception e) {
-			return new ResponseEntity<String>("Deu esse erro aqui: "+e.getMessage(), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<String>("Deu esse erro aqui: " + e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
-		
+
 	}
 
 }
