@@ -15,10 +15,10 @@ import lombok.Setter;
 @Setter
 @Entity
 public class Acessorio {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	private String nome;
 }
