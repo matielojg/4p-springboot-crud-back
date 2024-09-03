@@ -10,7 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.uniamerica</groupId>
-	<artifactId>biblioteca</artifactId>
+	<artifactId>gestao_loja_roupas</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>carros</name>
 	<description>Demo project for Spring Boot</description>
@@ -57,7 +57,7 @@
 		<dependency>
 			<groupId>jakarta.validation</groupId>
 			<artifactId>jakarta.validation-api</artifactId>
-			<version>3.0.2</version> <!-- ou a versão mais recente -->
+			<version>3.1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
