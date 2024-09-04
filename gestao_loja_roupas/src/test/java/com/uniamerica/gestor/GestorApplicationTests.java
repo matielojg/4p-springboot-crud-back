@@ -1,10 +1,10 @@
-package com.uniamerica.biblioteca;
+package com.uniamerica.gestor;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BibliotecaApplicationTests {
+class GestorApplicationTests {
 
 	@Test
 	void contextLoads() {
