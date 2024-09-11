@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -170,21 +171,31 @@ public class ClienteServiceTest {
 
     @Test
     public void testFindByCpfLike() {
-        // Mock para a lista de clientes com CPF que contém "123"
-        Cliente cliente = new Cliente();
-        cliente.setId(1L);
-        cliente.setNome("João");
-        cliente.setCpf("456456789");
+        // Cria um cliente cujo CPF contém "123"
+        Cliente clienteCom123 = new Cliente();
+        clienteCom123.setId(1L);
+        clienteCom123.setNome("João");
+        clienteCom123.setCpf("123456789");
 
-        List<Cliente> listaClientes = Arrays.asList(cliente);
+        // Cria um cliente cujo CPF não contém "123"
+        Cliente clienteSem123 = new Cliente();
+        clienteSem123.setId(2L);
+        clienteSem123.setNome("Maria");
+        clienteSem123.setCpf("456456789");
+
+        List<Cliente> listaClientes = Arrays.asList(clienteCom123); // Lista de clientes que contém o CPF com "123"
 
         // Define o comportamento do mock para o método findByCpfLike
-        when(clienteRepository.findByCpfLike("123")).thenReturn(listaClientes);
+        when(clienteRepository.findByCpfLike("%123%")).thenReturn(listaClientes);
 
-        // Chama o método a ser testado
-        List<Cliente> resultado = clienteService.findByCpfLike("123");
+        // Chama o método a ser testado com um critério que deve corresponder
+        List<Cliente> resultado = clienteService.findByCpfLike("%123%");
 
-        // Verifica se o resultado é o esperado
-        assertEquals(listaClientes, resultado);
+        // Verifica se o resultado contém o cliente esperado com CPF "123"
+        assertEquals(1, resultado.size());
+        assertEquals("123456789", resultado.get(0).getCpf());
+        
+        // Verifica que o cliente sem "123" não está no resultado
+        assertTrue(resultado.stream().noneMatch(c -> c.getCpf().equals("456456789")));
     }
 }
